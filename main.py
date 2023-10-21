@@ -1,32 +1,21 @@
-from lib.CRUD import (
-    close_connection,
-    create_house,
-    update_house,
-    delete_house,
-    read_house_by_id
-)
-from lib.load_data import load
+mod lib;
 
+fn main() -> rusqlite::Result<()> {
+    lib::load("california_housing_train.csv")?;  // Import data from CSV
 
-def main():
-    load("california_housing_train.csv")  # Import data from CSV
+    // Create a house
+    lib::create_house(-122.5, 37.7, 40.0, 2000.0, 350.0, 1500.0, 350.0, 8.5, 500000.0)?;
 
-    #create_house
-    create_house(-122.5, 37.7, 40, 2000, 350, 1500, 350, 8.5, 500000)  # Create
+    // Update house with id=1
+    lib::update_house(1, -122.5, 37.7, 45.0, 2500.0, 400.0, 1600.0, 400.0, 9.0, 550000.0)?;
 
-    # update house with id=1
-    update_house(1, -122.5, 37.7, 45, 2500, 400, 1600, 400, 9.0, 550000)  # Update
+    // Print house with id=10
+    lib::read_house_by_id(10)?;
 
-    # print house with id=10
-    read_house_by_id(10)  # Read after update
+    // Delete house with id=1
+    lib::delete_house(1)?;
 
-    # delete house with id=5
-    delete_house(1)  # Delete
+    // Close the connection
+    lib::close_connection()
+}
 
-    # Close the connection
-    close_connection()
-    return 1
-
-
-if __name__ == "__main__":
-    main()
