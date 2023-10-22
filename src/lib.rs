@@ -6,16 +6,16 @@ use rusqlite::{params, Connection, Result};
 // Create a struct to represent a House.
 #[derive(Debug)]
 pub struct House {
-    id: i32,
-    longitude: f64,
-    latitude: f64,
-    housing_median_age: i32,
-    total_rooms: i32,
-    total_bedrooms: i32,
-    population: i32,
-    households: i32,
-    median_income: f64,
-    median_house_value: f64,
+    pub id: i32,
+    pub longitude: f64,
+    pub latitude: f64,
+    pub housing_median_age: i32,
+    pub total_rooms: i32,
+    pub total_bedrooms: i32,
+    pub population: i32,
+    pub households: i32,
+    pub median_income: f64,
+    pub median_house_value: f64,
 }
 
 pub fn create_house(conn: &Connection, house: &House) -> Result<()> {
