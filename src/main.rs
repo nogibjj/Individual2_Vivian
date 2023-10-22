@@ -1,8 +1,6 @@
 extern crate rusqlite;
 extern crate csv;
 
-mod lib;  // Importing the local module
-
 fn main() -> Result<(), rusqlite::Error> {
     lib::load("california_housing_train.csv")?; // Import data from CSV
 
