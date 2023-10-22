@@ -78,11 +78,12 @@ Below shows the output after each CRUD operations on my dataset:
 
 ## Optimized Rust Binary
 I included the action of optimized-binary in my CICD process:
-- name: Archive Binary
-      uses: actions/upload-artifact@v2
-      with:
+
+     name: Archive Binary
+     uses: actions/upload-artifact@v2
+     with:
         name: optimized-binary
-        path: target/release/jeremy_tan_sqlite
+        path: target/release/sqlite_operations
   
 Note: You can find and download the uploaded artifact from actions' latest workflow run.
 
