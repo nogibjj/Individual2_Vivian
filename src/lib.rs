@@ -4,6 +4,7 @@ extern crate csv;
 use rusqlite::{params, Connection, Result};
 
 // Create a struct to represent a House.
+#[derive(Debug)]
 struct House {
     id: i32,
     longitude: f64,
