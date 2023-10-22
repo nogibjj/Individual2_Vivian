@@ -1,5 +1,7 @@
 extern crate rusqlite;
 extern crate csv;
+use sqlite_operations::{load,create_house,update_house,delete_house,read_house_by_id};
+use std::env;
 
 fn main() -> Result<(), rusqlite::Error> {
     lib::load("california_housing_train.csv")?; // Import data from CSV
