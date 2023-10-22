@@ -27,29 +27,6 @@ pub fn create_house(conn: &Connection, house: &House) -> Result<()> {
     Ok(())
 }
 
-pub fn read_all_houses(conn: &Connection) -> Result<Vec<House>> {
-    let mut stmt = conn.prepare("SELECT * FROM houses")?;
-    let house_iter = stmt.query_map([], |row| {
-        Ok(House {
-            id: row.get(0)?,
-            longitude: row.get(1)?,
-            latitude: row.get(2)?,
-            housing_median_age: row.get(3)?,
-            total_rooms: row.get(4)?,
-            total_bedrooms: row.get(5)?,
-            population: row.get(6)?,
-            households: row.get(7)?,
-            median_income: row.get(8)?,
-            median_house_value: row.get(9)?,
-        })
-    })?;
-    
-    let mut houses = vec![];
-    for house in house_iter {
-        houses.push(house?);
-    }
-    Ok(houses)
-}
 
 pub fn update_house(conn: &Connection, house: &House) -> Result<()> {
     conn.execute(
