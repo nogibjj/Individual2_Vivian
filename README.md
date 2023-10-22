@@ -77,7 +77,14 @@ Below shows the output after each CRUD operations on my dataset:
 <img width="924" alt="Screen Shot 2023-10-22 at 1 30 43 PM" src="https://github.com/nogibjj/Individual2_Vivian/assets/143654445/490289c2-28f7-461b-a1aa-e129cc0a7c18">
 
 ## Optimized Rust Binary
-You can find and download the uploaded artifact by going to actions and clicking on the latest workflow run
+I included the action of optimized-binary in my CICD process:
+- name: Archive Binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: optimized-binary
+        path: target/release/jeremy_tan_sqlite
+  
+Note: You can find and download the uploaded artifact from actions' latest workflow run.
 
 ## Use of Copilot
 I integrated GitHub Copilot into my IDE and codespace to assist with code writing. While developing the Rust application, I started with a python script containing specific functions and operations and ask Copilot to provided real-time suggestions based on the comments I provided, and it helped me convert the code into Rust. 
