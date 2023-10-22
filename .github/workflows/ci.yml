@@ -29,6 +29,11 @@ jobs:
       run: make lint
     - name: Test
       run: make test
+    - name: Archive Binary
+      uses: actions/upload-artifact@v2
+      with:
+        name: optimized-binary
+        path: target/release/sqlite_operations
     - name: pull repository
       run: git pull
     
