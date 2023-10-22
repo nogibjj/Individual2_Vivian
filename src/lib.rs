@@ -66,6 +66,33 @@ pub fn delete_house(conn: &Connection, id: i32) -> Result<()> {
     Ok(())
 }
 
+pub fn read_house_by_id(conn: &Connection, house_id: i32) -> Result<Option<House>> {
+    let mut stmt = conn.prepare("SELECT * FROM houses WHERE id = ?1")?;
+    let mut house_iter = stmt.query_map(params![house_id], |row| {
+        Ok(House {
+            id: row.get(0)?,
+            longitude: row.get(1)?,
+            latitude: row.get(2)?,
+            housing_median_age: row.get(3)?,
+            total_rooms: row.get(4)?,
+            total_bedrooms: row.get(5)?,
+            population: row.get(6)?,
+            households: row.get(7)?,
+            median_income: row.get(8)?,
+            median_house_value: row.get(9)?,
+        })
+    })?;
+
+    match house_iter.next() {
+        Some(Ok(house)) => {
+            println!("{:?}", house);
+            Ok(Some(house))
+        },
+        Some(Err(e)) => Err(e),
+        None => Ok(None),  // No matching house found
+    }
+}
+
 
 
 pub fn load(dataset: &str) -> Result<()> {
