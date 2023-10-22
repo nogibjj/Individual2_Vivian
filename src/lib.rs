@@ -96,9 +96,9 @@ pub fn load(dataset: &str) -> Result<()> {
     )?;
 
     // Read the CSV file and insert data into the SQLite database
-    let mut rdr = csv::Reader::from_path(dataset)?;
+    let mut rdr = csv::Reader::from_path(dataset).unwrap();
     for result in rdr.deserialize() {
-        let row: (f64, f64, f64, f64, f64, f64, f64, f64, f64) = result?;
+        let row: (f64, f64, f64, f64, f64, f64, f64, f64, f64) = result.unwrap();
         conn.execute(
             "INSERT INTO houses (longitude, latitude, housing_median_age, total_rooms, total_bedrooms, population, households, median_income, median_house_value) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
             params![row.0, row.1, row.2, row.3, row.4, row.5, row.6, row.7, row.8]
