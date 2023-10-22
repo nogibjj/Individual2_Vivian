@@ -5,7 +5,7 @@ use rusqlite::{params, Connection, Result};
 
 // Create a struct to represent a House.
 #[derive(Debug)]
-struct House {
+pub struct House {
     id: i32,
     longitude: f64,
     latitude: f64,
@@ -66,11 +66,6 @@ pub fn delete_house(conn: &Connection, id: i32) -> Result<()> {
     Ok(())
 }
 
-pub fn main() {
-    let conn = Connection::open("houses.db").expect("Failed to open database.");
-    // Use the functions above as needed
-    // Example: create_house(&conn, &house).unwrap();
-}
 
 
 pub fn load(dataset: &str) -> Result<()> {
