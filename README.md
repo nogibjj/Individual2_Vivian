@@ -94,11 +94,12 @@ The code provided, especially functions like create_house, read_all_houses, upda
 
 some examples where I use copilot in my code:
 
-//Impelement function create_house to Rust
+    Impelement function create_house to Rust
 
-//create a data structure House 
+    create a data structure House 
 
-//handle the loading csv error
+    handle the loading csv error
 
 ## Youtube Video
+https://youtu.be/N3TqNnvUcqo
 
